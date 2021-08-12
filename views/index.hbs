@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<div id="gd"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>
+<script type="text/javascript">
+	
+	const socket = io();
+
+	socket.on('connect', () => {
+		console.log("connected");
+	});
+
+	socket.on('new data', (msg) => {
+		console.log(msg);
+	});
+
+	Plotly.newPlot("gd", /* JSON object */ {
+	    "data": [{ "y": [1, 2, 3] }],
+	    "layout": { "width": 600, "height": 400}
+	});
+
+</script>
