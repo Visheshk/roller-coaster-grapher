@@ -7,17 +7,21 @@
 	
 	const socket = io();
 
-	socket.on('connect', () => {
-		console.log("connected");
-	});
-
-	socket.on('new data', (msg) => {
-		console.log(msg);
-	});
-
 	Plotly.newPlot("gd", /* JSON object */ {
 	    "data": [{ "y": [1, 2, 3] }],
 	    "layout": { "width": 600, "height": 400}
 	});
+
+	socket.on('connect', () => {
+		console.log("connected");
+	});
+
+	socket.on('new data', (msg, dl, si) => {
+		console.log(msg);
+
+		// console.log(JSON.parse(msg));
+	});
+
+	
 
 </script>
